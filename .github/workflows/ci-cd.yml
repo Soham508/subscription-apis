@@ -59,7 +59,7 @@ jobs:
       # Step 3: Build Docker image from Dockerfile
       - name: Build Docker image
         run: |
-          docker build -t my-django-app:latest .
+          docker build -t my-django-app:${{ github.sha }} .
           docker images  # This will print the list of images and verify the image was created
   
   deploy:
@@ -91,14 +91,9 @@ jobs:
       # Step 5: Tag the Docker image (this assumes the image was built in the build job)
       - name: Tag Docker image
         run: |
-          docker tag my-django-app:latest soham508/my-django-app:latest
-  
-      # Step 6: Push Docker image to Docker Hub
-      - name: Push Docker image to Docker Hub
-        run: |
-          docker push soham508/my-django-app:latest
-  
-  
+          docker tag my-django-app:${{ github.sha }} soham508/my-django-app:${{ github.sha }}
+          docker push soham508/my-django-app:${{ github.sha }}
+   
       # Step 6: Simulate deployment (dummy check since no cloud instance is available)
       - name: Simulate deployment (dummy check)
         run: |
