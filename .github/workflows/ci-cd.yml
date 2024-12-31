@@ -86,12 +86,12 @@ jobs:
       # Step 4: Tag the Docker image
       - name: Tag Docker image
         run: |
-          docker tag my-django-app:latest your-dockerhub-username/my-django-app:latest
+          docker tag my-django-app:latest soham508/my-django-app:latest
 
       # Step 5: Push Docker image to Docker Hub (or other container registries like AWS ECR)
       - name: Push Docker image to Docker Hub
         run: |
-          docker push your-dockerhub-username/my-django-app:latest
+          docker push soham508/my-django-app:latest
 
       # Step 6: Simulate deployment (dummy check since no cloud instance is available)
       - name: Simulate deployment (dummy check)
