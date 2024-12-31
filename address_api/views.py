@@ -1,32 +1,33 @@
 # ModelViewSet-based view
-from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
+#from rest_framework import viewsets
+#from rest_framework.permissions import AllowAny
+#from .models import Address
+#from .serializers import AddressSerializer
+#
+#
+#class AddressViewSet(viewsets.ModelViewSet):
+#    queryset = Address.objects.all().order_by("name")
+#    serializer_class = AddressSerializer
+#    permission_classes = [AllowAny]
+
+#APIView-based view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from .models import Address
 from .serializers import AddressSerializer
 
-
-class AddressViewSet(viewsets.ModelViewSet):
-    queryset = Address.objects.all().order_by("name")
-    serializer_class = AddressSerializer
-    permission_classes = [AllowAny]
-
-# APIView-based view
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# from rest_framework import status
-# from .models import Address
-# from .serializers import AddressSerializer
-# class AddressList(APIView):
-#     def get(self, request, format=None):
-#         addresses = Address.objects.all()
-#         serializer = AddressSerializer(addresses, many=True)
-#         return Response(serializer.data)
-#     def post(self, request, format=None):
-#         serializer = AddressSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class AddressList(APIView):
+    def get(self, request, format=None):
+        addresses = Address.objects.all()
+        serializer = AddressSerializer(addresses, many=True)
+        return Response(serializer.data)
+    def post(self, request, format=None):
+        serializer = AddressSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Mixins
 # from rest_framework import mixins
