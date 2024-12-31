@@ -70,7 +70,7 @@ DATABASES = {
         'NAME': 'Subscription',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-                'host': 'mongodb+srv://django-restful-api:DHOZqos2CDQrFWLP@cluster0.qwxya.mongodb.net/'
+                'host': 'mongodb+srv://django-restful-api:SAMPLEAPP@cluster0.qwxya.mongodb.net/'
         }
     }
 }
