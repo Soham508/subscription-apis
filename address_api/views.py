@@ -17,6 +17,7 @@ from rest_framework import status
 from .models import Address
 from .serializers import AddressSerializer
 
+
 class AddressList(APIView):
     def get(self, request, format=None):
         addresses = Address.objects.all()
